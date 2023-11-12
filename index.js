@@ -4,6 +4,8 @@ import morgan from 'morgan';
 
 import loadMongoDB from './src/config/db.js';
 import RecipeRouter from './src/routes/recipe.router.js';
+import ReviewRouter from './src/routes/review.router.js';
+
 
 import { PORT } from './src/config/env.js';
 import { errorHandler, notFound } from './src/middlewares/error-handlers.js';
@@ -16,6 +18,8 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/recipe', RecipeRouter);
+app.use('/review', ReviewRouter);
+
 
 app.use(
     '/img',
