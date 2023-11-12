@@ -1,15 +1,13 @@
 import ReviewModel from '../models/review.js';
+import RecipeModel from '../models/recipe.js';
 
 /**
  * @param {String} name
  * @param {String} review
- * 
+ *
  * */
 
-export async function create(
-    name,
-    review,
-) {
+export async function create(name, review) {
     return await ReviewModel.create({
         name: name,
         createdAt: new Date(),
@@ -31,15 +29,10 @@ export async function getById(id) {
 /**
  * @param {String} name
  * @param {String} review
- * 
+ *
  * */
 
-
-export async function editById(
-    id,
-    name,
-    review,
-) {
+export async function editById(id, name, review) {
     return await ReviewModel.updateOne(
         {
             _id: id,
@@ -57,10 +50,13 @@ export async function editById(
     );
 }
 
-
 /**
  * @param {any} id
  */
 export async function deleteById(id) {
     return await ReviewModel.deleteOne({ _id: id });
+}
+
+export async function deleteReviewByRecipe(recipe) {
+    return await ReviewModel.deleteMany({ recipe: recipe });
 }

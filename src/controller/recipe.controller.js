@@ -2,10 +2,12 @@ import {
     create,
     getAll,
     getById,
-    deleteById,
+    deleteRecipeById,
     editById,
     setPhoto,
 } from '../services/recipe.service.js';
+
+import { deleteReviewByRecipe } from '../services/review.service.js';
 
 import { deleteImage } from '../utils/image-utils.js';
 
@@ -119,7 +121,12 @@ export async function delRecipe(req, res) {
         }
     });
 
-    const deletedData = await deleteById(req.params.id);
+    const result = await deleteReviewByRecipe(recipe);
+    if (!result.deletedCount) {
+        return res.status(404).json({ error: 'Error updating review' });
+    }
+
+    const deletedData = await deleteRecipeById(req.params.id);
 
     if (!deletedData.deletedCount) {
         return res.status(404).json({ error: 'Not found!' });

@@ -95,6 +95,6 @@ export async function setPhoto(id, photo) {
 /**
  * @param {any} id
  */
-export async function deleteById(id) {
+export async function deleteRecipeById(id) {
     return await RecipeModel.deleteOne({ _id: id });
 }
