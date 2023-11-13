@@ -7,11 +7,12 @@ import RecipeModel from '../models/recipe.js';
  *
  * */
 
-export async function create(name, review) {
+export async function create(name, review, recipe) {
     return await ReviewModel.create({
         name: name,
         createdAt: new Date(),
         review: review,
+        recipe: ReviewModel.recipe.getById ,
     });
 }
 
