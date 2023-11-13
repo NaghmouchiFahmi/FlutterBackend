@@ -23,6 +23,12 @@ export async function create(name, review, recipe) {
         recipe: recipe ,
     });
 }
+catch (error) {
+    // Handle the error (e.g., log it, throw it, or return a specific response)
+    console.error('Error creating review:', error);
+    throw error;
+  }
+
 }
 
 export async function getAll() {
