@@ -8,12 +8,21 @@ import RecipeModel from '../models/recipe.js';
  * */
 
 export async function create(name, review, recipe) {
+    try{
+        const recipe = await ReviewModel.recipe.getById(recipeId);
+
+    if (!recipe) {
+      // Handle the case where the recipe is not found
+      console.error('Recipe not found');
+      return null;
+    }
     return await ReviewModel.create({
         name: name,
         createdAt: new Date(),
         review: review,
-        recipe: ReviewModel.recipe.getById ,
+        recipe: recipe ,
     });
+}
 }
 
 export async function getAll() {
