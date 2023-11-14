@@ -7,27 +7,12 @@ import RecipeModel from '../models/recipe.js';
  *
  * */
 
-export async function create(name, review, recipe) {
-    try{
-        const recipe = await ReviewModel.recipe.getById(recipeId);
-
-    if (!recipe) {
-      // Handle the case where the recipe is not found
-      console.error('Recipe not found');
-      return null;
-    }
+export async function create(name, review) {
     return await ReviewModel.create({
         name: name,
         createdAt: new Date(),
         review: review,
-        recipe: recipe ,
     });
-}
-catch (error) {
-    // Handle the error (e.g., log it, throw it, or return a specific response)
-    console.error('Error creating review:', error);
-    throw error;
-  }
 
 }
 

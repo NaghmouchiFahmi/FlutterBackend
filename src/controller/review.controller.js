@@ -8,14 +8,12 @@ import {
 
 
 export async function createReview(req, res) {
-    const { name, review , recipeid } = req.body;
+    const { name, review  } = req.body;
 
-    const { recipeId } = req.query;
-    fetch(recipeId)
     const reviewData = await create(
         name,
         review,
-        recipeid,
+    
     );
 
     if (!reviewData) {
