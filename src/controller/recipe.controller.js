@@ -45,6 +45,20 @@ export async function getRecipeById(req, res) {
     return res.send(found);
 }
 
+
+/*export async function getRecipeByUserId(req, res) {
+    const userId = req.params.userId; // Assuming the user ID is part of the request parameters
+
+    // Assuming you have a function named getByUserId to retrieve recipes by user ID
+    const found = await getByUserId(userId);
+
+    if (!found) {
+        return res.status(404).json({ error: 'Recipe not found for the specified user ID!' });
+    }
+
+    return res.send(found);
+}*/
+
 export async function editRecipe(req, res) {
     const { name, description, calories, cookingTime, ingredients } = req.body;
 

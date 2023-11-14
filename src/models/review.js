@@ -14,11 +14,11 @@ export default model(
                 required: true,
                 trim: true,
             },
-            recipe: {
+           /* recipe: {
                 type: Schema.Types.ObjectId,
                 ref: 'Recipe',
                 required: true,
-            },
+            },*/
         },
         {
             timestamps: true,
